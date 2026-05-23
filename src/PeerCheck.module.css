@@ -139,6 +139,33 @@
   cursor: not-allowed;
 }
 
+.bumpBtn {
+  appearance: none;
+  align-self: flex-start;
+  margin: 4px 0 12px;
+  padding: 6px 12px;
+  background: transparent;
+  color: var(--ink);
+  border: 1px dashed rgba(10, 10, 10, 0.35);
+  border-radius: 99px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: lowercase;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, transform 0.08s;
+}
+
+.bumpBtn:hover {
+  background: rgba(10, 10, 10, 0.05);
+  border-color: var(--ink);
+}
+
+.bumpBtn:active {
+  transform: translateY(1px);
+}
+
 .privacy {
   font-family: 'JetBrains Mono', ui-monospace, monospace;
   font-size: 10px;

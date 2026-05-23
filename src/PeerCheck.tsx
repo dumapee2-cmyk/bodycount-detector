@@ -69,6 +69,14 @@ export default function PeerCheck({ age, predictedBodyCount }: Props) {
     setSubmitted(parsed);
   };
 
+  const bumpUp = () => {
+    setRaw((curr) => {
+      const n = parseInt(curr, 10);
+      const next = (Number.isFinite(n) ? n : 0) + 1;
+      return String(Math.min(999, next));
+    });
+  };
+
   const onEdit = () => setSubmitted(null);
 
   // ─── result view ────────────────────────────────────────────────────────
@@ -172,6 +180,10 @@ export default function PeerCheck({ age, predictedBodyCount }: Props) {
           check ↗
         </button>
       </form>
+
+      <button type="button" className={styles.bumpBtn} onClick={bumpUp}>
+        + increase body count
+      </button>
 
       <p className={styles.privacy}>
         · nothing transmitted · no account · only a local counter ({submissionRank.toLocaleString()} so far)
