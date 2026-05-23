@@ -1,0 +1,367 @@
+/* Body Count Detector — measurement-printout aesthetic.
+   Cream paper, charcoal text, single warm-rust accent, generous whitespace.
+   Inspired by lab notebooks and editorial print. No gradients, no glassmorph. */
+
+.experiment {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 32px 36px 28px;
+  background: var(--paper);
+  border: 1px solid rgba(10, 10, 10, 0.16);
+  border-radius: 2px;
+  color: var(--ink);
+  position: relative;
+  animation: enter 460ms cubic-bezier(0.22, 0.9, 0.32, 1);
+  /* Subtle paper sheen + a thin inner ring for a "specimen card" feel */
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5),
+    0 1px 0 rgba(0, 0, 0, 0.03);
+}
+
+@keyframes enter {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─────────── header ─────────── */
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  border-bottom: 1px solid rgba(10, 10, 10, 0.16);
+  padding-bottom: 12px;
+  margin-bottom: 32px;
+}
+
+.readingTag { color: var(--hot); font-weight: 700; }
+.samples { opacity: 0.7; }
+
+/* ─────────── hero ─────────── */
+.heroBlock {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.heroLabel {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 18px;
+}
+
+.heroNumber {
+  display: inline-block;
+  position: relative;
+  padding: 0 8px;
+}
+
+.heroValue {
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: clamp(140px, 30vw, 200px);
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  display: block;
+}
+
+.heroBand {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 12px;
+  letter-spacing: 0.20em;
+  text-transform: lowercase;
+  color: var(--ink-3);
+  margin-top: 14px;
+}
+
+/* ─────────── rule ─────────── */
+.rule {
+  height: 1px;
+  background: rgba(10, 10, 10, 0.16);
+  margin: 0 0 24px;
+}
+
+/* ─────────── meta grid (age + summary stats) ─────────── */
+.metaGrid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+
+.metaRow {
+  display: grid;
+  grid-template-columns: 140px 90px 1fr;
+  align-items: center;
+  gap: 14px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+.metaLabel {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.metaValue {
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.metaSuffix {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.10em;
+  opacity: 0.5;
+  margin-left: 2px;
+}
+
+.metaTrack {
+  display: block;
+  height: 5px;
+  background: rgba(10, 10, 10, 0.08);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.metaFill {
+  display: block;
+  height: 100%;
+  background: var(--ink);
+  border-radius: 99px;
+  animation: barFill 700ms cubic-bezier(0.22, 0.9, 0.32, 1) both;
+}
+
+/* ─────────── inputs section ─────────── */
+.inputsHeader {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+.inputsHeaderRule {
+  flex: 1;
+  height: 1px;
+  background: rgba(10, 10, 10, 0.16);
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.inputRow {
+  display: grid;
+  grid-template-columns: 130px 56px 1fr;
+  align-items: center;
+  gap: 12px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 11.5px;
+}
+
+.inputLabel {
+  letter-spacing: 0.08em;
+  color: var(--ink-2);
+}
+
+.inputValue {
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  color: var(--ink);
+  text-align: right;
+}
+
+.inputTrack {
+  display: block;
+  height: 3px;
+  background: rgba(10, 10, 10, 0.08);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.inputFill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--hot);
+  border-radius: 99px;
+  animation: barFill 800ms cubic-bezier(0.22, 0.9, 0.32, 1) both;
+}
+
+@keyframes barFill {
+  from { width: 0; }
+  /* `to` set inline via the width style */
+}
+
+/* ───────── feature ratings (new identity panel) ───────── */
+.ratings {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.ratingRow {
+  display: grid;
+  grid-template-columns: 150px 1fr 60px;
+  grid-template-rows: auto auto;
+  align-items: baseline;
+  column-gap: 12px;
+  row-gap: 4px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+.ratingLabel {
+  font-size: 11px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: var(--ink-2);
+  font-weight: 700;
+}
+
+.ratingCategory {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  font-style: italic;
+  letter-spacing: -0.005em;
+}
+
+.ratingValue {
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 900;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  letter-spacing: -0.01em;
+}
+
+.ratingMax {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  font-weight: 700;
+  opacity: 0.4;
+  margin-left: 1px;
+}
+
+.ratingTrack {
+  grid-column: 1 / -1;
+  display: block;
+  height: 4px;
+  background: rgba(10, 10, 10, 0.08);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.ratingFill {
+  display: block;
+  height: 100%;
+  width: 0;
+  background: var(--hot);
+  border-radius: 99px;
+  animation: barFill 800ms cubic-bezier(0.22, 0.9, 0.32, 1) both;
+}
+
+/* ─────────── verdict ─────────── */
+.verdict {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: 0 0 28px;
+  padding: 14px 16px;
+  background: rgba(10, 10, 10, 0.04);
+  border-left: 2px solid var(--hot);
+  color: var(--ink);
+}
+
+.verdictMark {
+  color: var(--hot);
+  font-weight: 700;
+  margin-right: 4px;
+}
+
+/* ─────────── actions ─────────── */
+.actions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.shareBtn,
+.againBtn {
+  appearance: none;
+  padding: 12px 16px;
+  border-radius: 2px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.shareBtn {
+  background: var(--ink);
+  color: var(--paper);
+  border: 1px solid var(--ink);
+}
+
+.shareBtn:hover { background: #2a2a2a; }
+.shareBtn:active { transform: translateY(1px); }
+
+.againBtn {
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid rgba(10, 10, 10, 0.4);
+}
+
+.againBtn:hover { background: rgba(10, 10, 10, 0.05); }
+
+/* ─────────── fineprint ─────────── */
+.fineprint {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  line-height: 1.55;
+  color: var(--ink-3);
+  margin: 0;
+  letter-spacing: 0.04em;
+  text-align: left;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(10, 10, 10, 0.18);
+}
+
+/* ─────────── responsive ─────────── */
+@media (max-width: 520px) {
+  .experiment { padding: 24px 22px 22px; }
+  .metaRow { grid-template-columns: 100px 70px 1fr; gap: 10px; }
+  .inputRow { grid-template-columns: 100px 50px 1fr; gap: 10px; }
+  .heroValue { font-size: clamp(110px, 36vw, 170px); }
+}

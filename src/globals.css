@@ -1,0 +1,61 @@
+:root {
+  --cream: #fff1d6;
+  --cream-shade: #f5e3bf;
+  --ink: #0a0a0a;
+  --ink-2: #2a2a2a;
+  --ink-3: #5a5a5a;
+  --paper: #fffbef;
+  --hot: #ed1c24;            /* cherry red */
+  --hot-deep: #b9151c;
+  --cold: #1e4bff;           /* electric blue */
+  --acid: #d5ff3a;           /* caution yellow-green */
+  --rule: rgba(10, 10, 10, 0.22);
+  --rule-soft: rgba(10, 10, 10, 0.12);
+
+  --agent-vybe:  #7a3df0;
+  --agent-404:   #0a0a0a;
+  --agent-simp:  #1e4bff;
+  --agent-hater: #ed1c24;
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background:
+    radial-gradient(circle at 12% -10%, #ffe1ea 0%, transparent 45%),
+    radial-gradient(circle at 96% 8%, #fff0c8 0%, transparent 40%),
+    radial-gradient(circle at 50% 100%, #efe6ff 0%, transparent 55%),
+    var(--cream);
+  background-attachment: fixed;
+  color: var(--ink);
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  min-height: 100svh;
+  overscroll-behavior: none;
+}
+
+#root {
+  min-height: 100vh;
+  min-height: 100svh;
+}
+
+::selection { background: var(--ink); color: var(--cream); }
+
+button { font-family: inherit; cursor: pointer; }
+
+/* paper grain (faint dot pattern) */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background-image: radial-gradient(rgba(10,10,10,0.04) 1px, transparent 1px);
+  background-size: 3px 3px;
+  mix-blend-mode: multiply;
+}

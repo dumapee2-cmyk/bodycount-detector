@@ -1,0 +1,48 @@
+/* Wrapper: full viewport. Pointer events pass through except on each mannequin
+   cutout. z-index sits below content cards so the figures read as "behind"
+   the readout while still being grabbable. */
+
+.wrap {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.figure {
+  position: absolute;
+  pointer-events: auto;
+  cursor: grab;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transform-origin: center;
+  will-change: transform;
+  /* The cutout is a transparent PNG, so the drop shadow follows the figure's
+     actual silhouette — clean grounding without a card around it. */
+  filter: drop-shadow(0 8px 10px rgba(10, 10, 10, 0.22))
+          drop-shadow(0 2px 3px rgba(10, 10, 10, 0.16));
+  transition: filter 200ms ease-out;
+}
+
+.figure:active { cursor: grabbing; }
+
+.figure.hit {
+  filter: drop-shadow(0 0 14px rgba(237, 28, 36, 0.55))
+          drop-shadow(0 6px 10px rgba(10, 10, 10, 0.24));
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+  user-select: none;
+  pointer-events: none;
+  /* Pop the wood grain so they read as warm and tactile on the cream page. */
+  filter: saturate(1.15) contrast(1.05);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .figure { transition: none; }
+}

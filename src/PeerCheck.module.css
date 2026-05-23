@@ -1,0 +1,299 @@
+/* Anonymous peer-percentile module — matches Verdict's printout aesthetic.
+   Cream paper, charcoal text, hot-red accent, generous whitespace. */
+
+.section {
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 26px 36px 26px;
+  background: var(--paper);
+  border: 1px solid rgba(10, 10, 10, 0.16);
+  border-radius: 2px;
+  color: var(--ink);
+  animation: enter 460ms cubic-bezier(0.22, 0.9, 0.32, 1);
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5),
+    0 1px 0 rgba(0, 0, 0, 0.03);
+}
+
+@keyframes enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.20em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  border-bottom: 1px solid rgba(10, 10, 10, 0.16);
+  padding-bottom: 12px;
+  margin-bottom: 22px;
+}
+
+.headTag {
+  color: var(--hot);
+  font-weight: 700;
+}
+
+.headPriv {
+  opacity: 0.7;
+}
+
+.title {
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 24px;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
+}
+
+.lede {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 12px;
+  line-height: 1.6;
+  color: var(--ink-2);
+  margin: 0 0 22px;
+}
+
+/* ─────────── input row ─────────── */
+.form {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 10px;
+  align-items: stretch;
+  margin-bottom: 14px;
+}
+
+.inputWrap {
+  position: relative;
+}
+
+.input {
+  width: 100%;
+  appearance: none;
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  background: rgba(10, 10, 10, 0.04);
+  border: 1px solid rgba(10, 10, 10, 0.22);
+  border-radius: 2px;
+  padding: 8px 60px 8px 14px;
+  font-variant-numeric: tabular-nums;
+  outline: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.input:focus {
+  background: var(--paper);
+  border-color: var(--ink);
+}
+
+.input::-webkit-outer-spin-button,
+.input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.inputUnit {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  pointer-events: none;
+}
+
+.submit {
+  appearance: none;
+  padding: 0 18px;
+  background: var(--ink);
+  color: var(--paper);
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.submit:hover:not(:disabled) { background: #2a2a2a; }
+.submit:active:not(:disabled) { transform: translateY(1px); }
+.submit:disabled {
+  background: rgba(10, 10, 10, 0.15);
+  color: var(--ink-3);
+  border-color: rgba(10, 10, 10, 0.18);
+  cursor: not-allowed;
+}
+
+.privacy {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  line-height: 1.55;
+  letter-spacing: 0.04em;
+  color: var(--ink-3);
+  margin: 0;
+}
+
+/* ─────────── result ─────────── */
+.resultBlock {
+  text-align: center;
+  margin-bottom: 22px;
+}
+
+.resultLabel {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.30em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 12px;
+}
+
+.percentile {
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: clamp(96px, 22vw, 144px);
+  line-height: 0.9;
+  letter-spacing: -0.04em;
+  color: var(--ink);
+  font-variant-numeric: tabular-nums;
+}
+
+.percentileSuffix {
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.20em;
+  text-transform: lowercase;
+  color: var(--hot);
+  margin-left: 6px;
+  display: inline-block;
+  transform: translateY(-50px);
+}
+
+.gauge {
+  position: relative;
+  height: 6px;
+  background: rgba(10, 10, 10, 0.08);
+  border-radius: 99px;
+  margin: 16px 0 20px;
+  overflow: visible;
+}
+
+.gaugeFill {
+  position: absolute;
+  inset: 0;
+  background: var(--ink);
+  border-radius: 99px;
+  width: 0;
+  animation: barFill 700ms cubic-bezier(0.22, 0.9, 0.32, 1) both;
+}
+
+.gaugeTick {
+  position: absolute;
+  top: -4px;
+  bottom: -4px;
+  width: 2px;
+  background: var(--hot);
+  border-radius: 2px;
+}
+
+.gaugeLegend {
+  display: flex;
+  justify-content: space-between;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-top: 6px;
+}
+
+.rule {
+  height: 1px;
+  background: rgba(10, 10, 10, 0.16);
+  margin: 0 0 16px;
+}
+
+.factRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 6px 0;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 12px;
+}
+
+.factRow + .factRow {
+  border-top: 1px dashed rgba(10, 10, 10, 0.12);
+}
+
+.factLabel {
+  letter-spacing: 0.10em;
+  color: var(--ink-3);
+}
+
+.factValue {
+  font-family: 'Archivo Black', 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 15px;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+}
+
+.deltaUp   { color: var(--hot); }
+.deltaDown { color: var(--cold); }
+
+.editBtn {
+  appearance: none;
+  margin-top: 18px;
+  width: 100%;
+  padding: 10px 16px;
+  background: transparent;
+  color: var(--ink);
+  border: 1px solid rgba(10, 10, 10, 0.4);
+  border-radius: 2px;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.editBtn:hover { background: rgba(10, 10, 10, 0.05); }
+
+.peerNote {
+  margin: 14px 0 0;
+  font-family: 'JetBrains Mono', ui-monospace, monospace;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: var(--ink-3);
+  text-align: center;
+  line-height: 1.5;
+}
+
+@keyframes barFill {
+  from { width: 0; }
+}
+
+@media (max-width: 520px) {
+  .section { padding: 22px 22px 22px; }
+  .form { grid-template-columns: 1fr; }
+  .percentile { font-size: clamp(80px, 28vw, 120px); }
+}
